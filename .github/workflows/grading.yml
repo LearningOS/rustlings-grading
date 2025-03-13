@@ -18,7 +18,7 @@ jobs:
         # 生成新的 JSON 内容
         new_json=$(jq -n \
           --arg channel "github" \
-          --argjson courseId "${{ secrets.RUSTLINGS_2024_AUTUMN_COURSE_ID }}" \
+          --argjson courseId "${{ secrets.RUSTLINGS_2025_SPRING_COURSE_ID }}" \
           --arg ext "aaa" \
           --arg name "$github_user" \
           --argjson score "$total_succeeds" \
@@ -32,7 +32,7 @@ jobs:
         cat $summary_file
     - name: Post summary JSON to remote API
       env:
-        post_api: ${{ secrets.RUSTLINGS_2024_AUTUMN_POST_API }}
+        post_api: ${{ secrets.RUSTLINGS_2025_SPRING_POST_API }}
       run: |
         summary_file=".github/result/summary.json"
         curl -X POST https://"$post_api" \
